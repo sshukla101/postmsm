@@ -1,7 +1,7 @@
 from setuptools import setup, Extension, find_packages
 
 
-__version__='0.1'
+__version__='0.1dev'
 
 setup(name='postmsm',
       description='Post MSMBuilder analysis, for doing more biology, less coding',
