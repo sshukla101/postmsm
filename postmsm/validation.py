@@ -1,8 +1,25 @@
+################################################################
+# Analysis post MSMBuilder                                     #   
+# Author: Saurabh Shukla <sshukla4@illinois.edu>               #
+# Orginally built for ShuklaGroup@illinois  <shuklagroup.org>  #
+################################################################
+
+
+#-----------------------------------------------------------------------------
+# Imports
+#-----------------------------------------------------------------------------
+
 from msmbuilder.msm import MarkovStateModel
 from msmbuilder.cluster import KMeans
 import os
 import scipy.sparse, scipy.io
 import numpy as np
+
+
+#-----------------------------------------------------------------------------
+# Code
+#-----------------------------------------------------------------------------
+
 
 ################################################################################
 # Making clusters with different number of states along with MSM's with 
