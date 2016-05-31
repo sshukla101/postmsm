@@ -1,2 +1,2 @@
 # postmsm
-Post MSMBuilder analysis, for doing more biology, less coding
+Post MSMBuilder analysis, for doing more biology, less coding.
