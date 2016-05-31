@@ -8,4 +8,6 @@ setup(name='postmsm',
       author='Saurabh Shukla',
       author_email='sshukla4@illinois.edu',
       version=__version__,
+      packages=['postmsm'],
+)
       
