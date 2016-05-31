@@ -1,2 +1,2 @@
 # postmsm
-Repository for post msmbuilder analysis
+Post MSMBuilder analysis, for doing more biology, less coding
