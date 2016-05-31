@@ -10,5 +10,6 @@ setup(name='postmsm',
       version=__version__,
       url='https://github.com/sshukla101/postmsm',
       packages=['postmsm'],
+      install_requires=['msmbuilder','pytraj']
 )
       
