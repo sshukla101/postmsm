@@ -20,7 +20,8 @@ import numpy as np
 
 
 
-
+#-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 def cluster_counts(n,cl_labels):
   """
   Function: Counting the frames in each cluster
@@ -39,6 +40,8 @@ def cluster_counts(n,cl_labels):
 
 
 
+#-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 def rst_extraction(n,cl_labels,traj_list,top_address):
   traj_number=[[i for i in range(0,0)] for j in range(0,n)]
   frame_number=[[i for i in range(0,0)] for j in range(0,n)]
