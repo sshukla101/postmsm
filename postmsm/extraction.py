@@ -75,6 +75,16 @@ def extract_index(n,cl_labels):
 
 #-----------------------------------------------------------------------------
 def rst_extract(index_tuple,traj_list, top_path):
+  """Extracts frames from trajectories and saves them in pdb format
+  Parameters:
+    index_tuple: Gives list of tuples of length==n; 
+                 first and second element of tuple correspond to trajectory and frame number respectively.
+    traj_list: List of string; each string is address of each trajectory file
+    top_path: String; path of topology file
+
+  Returns:
+    Creates pdb files
+  """
   L=len(index_tuple)
   for i in range(0,L):
     traj=traj_list[index_tuple[i][0]]
