@@ -35,7 +35,7 @@ def cluster_counts(n,cl_labels):
     counts: list of counts corresponding to each cluster
   """
   frame_number=[[i for i in range(0,0)] for j in range(0,n)]              #Intialization of a 2d list; length == number of clusters
-  [[frame_number[i[1]].append(i[0]) for i in enumerate(j)] for j in l];   #List maps the clusters to their trajectory numbers.  
+  [[frame_number[i[1]].append(i[0]) for i in enumerate(j)] for j in cl_labels];   #List maps the clusters to their trajectory numbers.  
   counts=[len(frame_number[i]) for i in range(n)]
   return counts
 
