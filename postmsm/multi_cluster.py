@@ -44,7 +44,7 @@ class merge_cluster(object):
     self.cl2=cl2
 
 
-  def labels_(self):
+  def merger_function(self):
     l1_input=self.cl1.labels_
     l2_input=self.cl2.labels_
     n=self.cl1.n_clusters
@@ -62,12 +62,32 @@ class merge_cluster(object):
         new_cl[traj_index]=s                       #Assigning new cl labels
         s=s+1
     
+    n_clusters=np.array(new_cl).max() +1
+    
     final_labels=[]
     p=q=0
     for i in size:
       q=p+i
       final_labels.append(new_cl[p:q])
       p=p+i
-    
-    return final_labels
+
+    return final_labels, n_clusters
+  
+  
+  @property
+  def labels_(self):
+  """
+  New Labels
+  """
+    l,n_clusters=self.merger_function()
+    return l
+  
+  
+  @property
+  def n_clusters(self):
+  """
+  Number of clusters after merging
+  """
+    l,n=self.merger_function()
+    return n
 
