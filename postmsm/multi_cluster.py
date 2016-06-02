@@ -44,8 +44,15 @@ class merge_cluster(object):
     centers2=self.cl2.cluster_centers_
     n=self.cl1.n_clusters
     size=[len(a) for a in l1_input]
-    l1=np.array([item for sublist in l1_input for item in sublist])
-    l2=np.array([item for sublist in l2_input for item in sublist])
+    
+    if isinstance(l1, list) is list:  #Checks if the labels are list of arrays.
+      l1=np.array([item for sublist in l1_input for item in sublist])
+    else
+      l1=l1_input
+    if isinstance(l2, list) is list:
+      l2=np.array([item for sublist in l2_input for item in sublist])
+    else
+      l2=l2_input
     
     new_cl=np.zeros(len(l1))
     new_centers1=[]
