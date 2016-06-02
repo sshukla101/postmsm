@@ -55,6 +55,7 @@ def extract_index(n,cl_labels):
     index_tuple: Gives list of tuples of length==n; 
                  first and second element of tuple correspond to trajectory and frame number respectively.
   """
+  from random import randint
   traj_number=[[i for i in range(0,0)] for j in range(0,n)]               #2d list initialization: mapping traj numbers
   frame_number=[[i for i in range(0,0)] for j in range(0,n)]              #2d list initialization: mapping frame numbers
   [[traj_number[i].append(j[0]) for i in j[1]] for j in enumerate(cl_labels)];    
