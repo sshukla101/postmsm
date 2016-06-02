@@ -94,4 +94,26 @@ def rst_extract(index_tuple,traj_list, top_path):
   
   
   
+  #-----------------------------------------------------------------------------
+class cluster_transform(object):
+  """Transforming cluster object based on MSM
   
+  Args:
+    cl: cluster object used for making msm
+    msm: msm object
+  
+  Attributes:
+    labels_: new labels for the cluster object
+    n_clusters: number of clusters
+    cluster_centers_: new cluster centers
+  """
+  def __init__(self,cl,msm):
+    self.cl=cl
+    self.msm=msm
+  
+  def transform_function(self):
+    l_old=self.cl.labels_
+    c_old=self.cl.cluster_centers_
+    mapping=msm.mapping_
+    
+    l_new=[mapping[i] for int(i) in j for j in l_old]
