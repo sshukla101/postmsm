@@ -78,7 +78,7 @@ class merge_cluster(object):
     new_centers2=new_centers2[0:n_clusters]
     
     if 'size' not in locals():  #If input labels are in array, no need to covert them in list of arrays.
-      final_labels=new_cl
+      final_labels=map(int,new_cl)
     else:  
       final_labels=[]
       p=q=0
@@ -86,7 +86,9 @@ class merge_cluster(object):
         q=p+i
         final_labels.append(new_cl[p:q])
         p=p+i
-
+      final_labels=[map(int,i) for i in final_labels]
+    
+    
     return final_labels, n_clusters, new_centers1, new_centers2 
   
   
