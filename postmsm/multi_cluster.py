@@ -18,24 +18,17 @@ import numpy as np
 # Code
 #-----------------------------------------------------------------------------
 class merge_cluster(object):
-  """
-  Merging two independent clusters made by MSMBuilder
+  """Merging two independent clusters made by MSMBuilder
     
-  Parameters
-  ----------
-  cl1: 
-    cluster object obtained from MSMBuilder
-  cl2:
-    cluster object obtained from MSMBuilder
+  Args:
+    cl1: cluster object obtained from MSMBuilder
+    cl2:cluster object obtained from MSMBuilder
     
-  Attributes
-  ----------
-  n_states: int
-    number of states in merged cluster assignment
-  labels_: list of arrays
-    cluster labels in new cluster assignment; each array corresponds to each trajectory
-  cluster_center:
-    new cluster centers
+  Attributes:
+    n_states (int): number of states in merged cluster assignment
+    labels_ (list of arrays): cluster labels in new cluster assignment; each array corresponds to each trajectory
+    cluster_center1 (array): first new cluster centers
+    cluster_center2 (array): Second new cluster centers
   """
 
 
