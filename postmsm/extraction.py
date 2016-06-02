@@ -77,7 +77,7 @@ def extract_index(n,cl_labels):
 
 
 #-----------------------------------------------------------------------------
-def rst_extract(index_tuple,traj_list, top_path):
+def pdb_extract(index_tuple,traj_list, top_path):
   """Extracts frames from trajectories and saves them in pdb format
   Parameters:
     index_tuple: Gives list of tuples of length==n; 
@@ -88,6 +88,7 @@ def rst_extract(index_tuple,traj_list, top_path):
   Returns:
     Creates pdb files
   """
+  import pytraj as pt
   L=len(index_tuple)
   for i in range(0,L):
     traj=traj_list[index_tuple[i][0]]
