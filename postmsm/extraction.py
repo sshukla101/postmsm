@@ -94,7 +94,7 @@ def rst_extract(index_tuple,traj_list, top_path):
   
   
 #-----------------------------------------------------------------------------
-def traj_list_maker(address,extension):
+def traj_list_maker(address,extension):     #Function for making list of "trajectory addresses"
   import re
   numbers = re.compile(r'(\d+)')
   def numericalSort(value):
@@ -107,7 +107,7 @@ def traj_list_maker(address,extension):
   return T
 
 #-----------------------------------------------------------------------------
-def transfrom_seq(s,shape_pkl):                    #Function for transforming single array cluster labels to 'list of array' type
+def reshape_seq(s,shape_pkl):     #Function for transforming single array cluster labels to 'list of array' type
   traj_frames=io.load(shape_pkl)
   sequences=[]
   p=q=0
