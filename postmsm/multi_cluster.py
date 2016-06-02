@@ -43,15 +43,18 @@ class merge_cluster(object):
     centers1=self.cl1.cluster_centers_
     centers2=self.cl2.cluster_centers_
     n=self.cl1.n_clusters
-    size=[len(a) for a in l1_input]
     
-    if isinstance(l1, list) is list:  #Checks if the labels are list of arrays.
+    
+    if isinstance(l1_input, list) is True:  #Checks if the labels are list of arrays.
+      size=[len(a) for a in l1_input]
       l1=np.array([item for sublist in l1_input for item in sublist])
-    else
+      
+    else:
       l1=l1_input
-    if isinstance(l2, list) is list:
+    if isinstance(l2_input, list) is True:
+      size=[len(a) for a in l2_input]
       l2=np.array([item for sublist in l2_input for item in sublist])
-    else
+    else:
       l2=l2_input
     
     new_cl=np.zeros(len(l1))
@@ -74,12 +77,15 @@ class merge_cluster(object):
     new_centers1=new_centers1[0:n_clusters]
     new_centers2=new_centers2[0:n_clusters]
     
-    final_labels=[]
-    p=q=0
-    for i in size:
-      q=p+i
-      final_labels.append(new_cl[p:q])
-      p=p+i
+    if 'size' not in locals():  #If input labels are in array, no need to covert them in list of arrays.
+      final_labels=new_cl
+    else:  
+      final_labels=[]
+      p=q=0
+      for i in size:
+        q=p+i
+        final_labels.append(new_cl[p:q])
+        p=p+i
 
     return final_labels, n_clusters, new_centers1, new_centers2 
   
