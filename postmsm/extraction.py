@@ -105,3 +105,14 @@ def traj_list_maker(address,extension):
   for traj in sorted(glob.glob(address+'*.'+extension),key=numericalSort):
     T.append(traj)
   return T
+
+#-----------------------------------------------------------------------------
+def transfrom_seq(s,shape_pkl):                    #Function for transforming single array cluster labels to 'list of array' type
+  traj_frames=io.load(shape_pkl)
+  sequences=[]
+  p=q=0
+  for i in traj_frames:
+    q=p+i
+    sequences.append(s[p:q])
+    p=p+i
+  return sequences
