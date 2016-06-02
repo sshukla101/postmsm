@@ -102,11 +102,9 @@ class merge_cluster(object):
     return n
 
   @property
-  def cluster_center1(self):
+  def cluster_centers_(self):
     l,n,c1,c2=self.merger_function()
-    return c1
+    c=[(i[1],j[1]) for i in enumerate(c1) for j in enumerate(c2) if i[0]==j[0]]
+    return c
 
-  @property
-  def cluster_center2(self):
-    l,n,c1,c2=self.merger_function()
-    return c2
+
