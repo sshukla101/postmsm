@@ -92,7 +92,7 @@ def rst_extract(index_tuple,traj_list, top_path):
   for i in range(0,L):
     traj=traj_list[index_tuple[i][0]]
     frame=index_tuple[i][1]
-    traj=pt.iterload(traj,top_path,frame_slice=(2),frame_slice=(frame, frame+1))
+    traj=pt.iterload(traj,top_path,frame_slice=(frame, frame+1))
     pt.write_traj(str(i)+'.pdb', traj, overwrite=True)
   
   
