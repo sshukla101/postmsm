@@ -93,5 +93,15 @@ def rst_extract(index_tuple,traj_list, top_path):
     pt.write_traj(str(i)+'.pdb', traj, overwrite=True)
   
   
-  
-  
+#-----------------------------------------------------------------------------
+def traj_list_maker(address,extension):
+  import re
+  numbers = re.compile(r'(\d+)')
+  def numericalSort(value):
+    parts = numbers.split(value)
+    parts[1::2] = map(int, parts[1::2])
+    return parts
+  T=[]
+  for traj in sorted(glob.glob(address+'*.'+extension),key=numericalSort):
+    T.append(traj)
+  return T
