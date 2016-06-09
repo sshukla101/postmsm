@@ -65,7 +65,7 @@ def parameter_clustering(n,cl_labels,metric):
   for i in range(0,len(frame_number)):
     temp=[]
     for j in range(0,len(frame_number[i])):
-      temp.append(dist[traj_number[i][j]][frame_number[i][j]])
+      temp.append(metric[traj_number[i][j]][frame_number[i][j]])
     metric_cluster.append(np.array(temp))
   
   return metric_cluster
