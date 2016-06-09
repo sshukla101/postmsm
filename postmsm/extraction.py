@@ -42,6 +42,37 @@ def cluster_counts(n,cl_labels):
   return counts
 
 
+#-----------------------------------------------------------------------------
+def parameter_clustering(n,cl_labels,metric):
+  """Extracts index of trajectory and frame based on cluster labels
+  Parameters:
+    n: number of clusters
+    cl_labels: labels obtained from the clustering. It should be a list of arrays
+
+  Returns:
+    index_tuple: Gives list of tuples of length==n; 
+                 first and second element of tuple correspond to trajectory and frame number respectively.
+  """
+  from random import randint
+  import numpy as np
+  traj_number=[[i for i in range(0,0)] for j in range(0,n)]               #2d list initialization: mapping traj numbers
+  frame_number=[[i for i in range(0,0)] for j in range(0,n)]              #2d list initialization: mapping frame numbers
+  [[traj_number[i].append(j[0]) for i in j[1]] for j in enumerate(cl_labels)];    
+  [[frame_number[i[1]].append(i[0]) for i in enumerate(j)] for j in cl_labels];
+  
+  metric_cluster=[]
+  
+  for i in range(0,len(frame_number)):
+    temp=[]
+    for j in range(0,len(frame_number[i])):
+      temp.append(dist[traj_number[i][j]][frame_number[i][j]])
+    metric_cluster.append(np.array(temp))
+  
+  return metric_cluster
+
+
+
+
 
 
 #-----------------------------------------------------------------------------
