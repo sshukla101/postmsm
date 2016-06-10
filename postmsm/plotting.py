@@ -18,7 +18,7 @@ from matplotlib import pyplot as plt
 #-----------------------------------------------------------------------------
 # Code
 #-----------------------------------------------------------------------------
-def free_energy_data(data1,data2,cl,msm):
+def free_energy_data(data1,data2,cl,msm,l):
   """Plotting weighted free energy landscape.
   
   Args:
@@ -29,8 +29,8 @@ def free_energy_data(data1,data2,cl,msm):
   from random import randint
   import numpy as np
   n=cl.n_clusters
-  cl_labels=cl.labels_
-  #cl_labels=l
+  #cl_labels=cl.labels_
+  cl_labels=l
   
   traj_number=[[i for i in range(0,0)] for j in range(0,n)]               #2d list initialization: mapping traj numbers
   frame_number=[[i for i in range(0,0)] for j in range(0,n)]              #2d list initialization: mapping frame numbers
@@ -56,11 +56,11 @@ def free_energy_data(data1,data2,cl,msm):
   dat2_array=[]
   counts_final=[]
   for key in inv_map_:
-    dat1_array.append(np.array(data1_clustered[inv_map_[key]]))
-    dat2_array.append(np.array(data2_clustered[inv_map_[key]]))
-    dat1_final=dat1_final+data1_clustered[inv_map_[key]]
-    dat2_final=dat2_final+data2_clustered[inv_map_[key]]
-    counts_final.append(counts[inv_map_[key]])
+    dat1_array.append(np.array(data1_clustered[int(inv_map_[key])]))
+    dat2_array.append(np.array(data2_clustered[int(inv_map_[key])]))
+    dat1_final=dat1_final+data1_clustered[int(inv_map_[key])]
+    dat2_final=dat2_final+data2_clustered[int(inv_map_[key])]
+    counts_final.append(counts[int(inv_map_[key])])
 
   
   np.savetxt('dat1.dat',dat1_final,newline='\n')
