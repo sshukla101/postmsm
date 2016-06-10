@@ -51,10 +51,12 @@ def free_energy_data(data1,data2,cl,msm):
   
   dat1_final=[]
   dat2_final=[]
+  dat1_array=[]
+  dat2_array=[]
   counts_final=[]
   for key in inv_map_:
-    #dat1_final.append(data1_clustered[inv_map_[key]])
-    #dat2_final.append(data1_clustered[inv_map_[key]])
+    dat1_array.append(np.array(data1_clustered[inv_map_[key]]))
+    dat2_array.append(np.array(data1_clustered[inv_map_[key]]))
     dat1_final=dat1_final+data1_clustered[inv_map_[key]]
     dat2_final=dat2_final+data2_clustered[inv_map_[key]]
     counts_final.append(counts[inv_map_[key]])
@@ -65,7 +67,7 @@ def free_energy_data(data1,data2,cl,msm):
   np.savetxt('count_mat.dat',counts_final,newline='\n')
   np.savetxt('msm_eq_pop.dat',msm.populations_,newline='\n')
   
-  return np.array(counts_final), dat1_final, dat2_final
+  return np.array(counts_final), dat1_array, dat2_array
   
   
   
