@@ -70,4 +70,7 @@ def free_energy_data(data1,data2,cl,msm):
   return np.array(counts_final), dat1_array, dat2_array
   
   
-  
+#----------------------------------------------------------------------------  
+#Plotting moving averages
+
+
