@@ -30,6 +30,7 @@ def free_energy_data(data1,data2,cl,msm):
   import numpy as np
   n=cl.n_clusters
   cl_labels=cl.labels_
+  #cl_labels=l
   
   traj_number=[[i for i in range(0,0)] for j in range(0,n)]               #2d list initialization: mapping traj numbers
   frame_number=[[i for i in range(0,0)] for j in range(0,n)]              #2d list initialization: mapping frame numbers
