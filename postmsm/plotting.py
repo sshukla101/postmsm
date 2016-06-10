@@ -56,7 +56,7 @@ def free_energy_data(data1,data2,cl,msm):
   counts_final=[]
   for key in inv_map_:
     dat1_array.append(np.array(data1_clustered[inv_map_[key]]))
-    dat2_array.append(np.array(data1_clustered[inv_map_[key]]))
+    dat2_array.append(np.array(data2_clustered[inv_map_[key]]))
     dat1_final=dat1_final+data1_clustered[inv_map_[key]]
     dat2_final=dat2_final+data2_clustered[inv_map_[key]]
     counts_final.append(counts[inv_map_[key]])
