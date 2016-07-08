@@ -47,3 +47,14 @@ inactive_traj=traj_list[0:90]
 active_traj=traj_list[536:576]
 
 
+#-----------------------------------------------------------------------------
+os.chdir(run_address)
+f=open('pyl10_inactive_rmsd.in','wb')
+f.write('parm '+address+top+'\n')
+
+for i in range(0,n):
+  f.write('trajin '+address+str(i)+'cluster.mdcrd'+'\n')
+
+f.write('reference ref_inactive.rst'+'\n')
+f.write('rmsd :1-171@CA,C,O,N reference'+'\n')
+f.write('rmsd :69-78&!@H= reference nofit out pyl10_holo_rmsd.dat'+'\n')
