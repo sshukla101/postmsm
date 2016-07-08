@@ -50,7 +50,7 @@ active_traj=traj_list[536:576]
 #-----------------------------------------------------------------------------
 os.chdir(run_address)
 f=open('pyl10_inactive_rmsd.in','wb')
-f.write('parm '+address+top+'\n')
+f.write('parm '+top_address+'\n')
 
 for i in range(0,n):
   f.write('trajin '+address+str(i)+'cluster.mdcrd'+'\n')
