@@ -18,8 +18,8 @@ from matplotlib import pyplot as plt
 #-----------------------------------------------------------------------------
 # Code
 #-----------------------------------------------------------------------------
-def free_energy_data(data1,data2,cl,msm):
-#def free_energy_data(data1,data2,cl,msm,l):
+#def free_energy_data(data1,data2,cl,msm):
+def free_energy_data(data1,data2,cl,msm,l):
   """Plotting weighted free energy landscape.
   
   Args:
@@ -30,8 +30,8 @@ def free_energy_data(data1,data2,cl,msm):
   from random import randint
   import numpy as np
   n=cl.n_clusters
-  cl_labels=cl.labels_
-  #cl_labels=l      #If labels
+  #cl_labels=cl.labels_
+  cl_labels=l      #If labels
   
   traj_number=[[i for i in range(0,0)] for j in range(0,n)]               #2d list initialization: mapping traj numbers
   frame_number=[[i for i in range(0,0)] for j in range(0,n)]              #2d list initialization: mapping frame numbers
