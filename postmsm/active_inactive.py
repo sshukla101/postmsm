@@ -48,13 +48,20 @@ active_traj=traj_list[536:576]
 
 
 #-----------------------------------------------------------------------------
+# Calculations on Inactive trajectories
+run_address='/home/sshukla4/pyl10/apo_holo_analysis/'
 os.chdir(run_address)
-f=open('pyl10_inactive_rmsd.in','wb')
+f=open('pyl10_inactive_cpptraj.in','wb')
 f.write('parm '+top_address+'\n')
 
-for i in range(0,n):
-  f.write('trajin '+address+str(i)+'cluster.mdcrd'+'\n')
+for i in range(0,len(inactive_traj)):
+  f.write('trajin '+inactive_traj[i]+'\n')
 
 f.write('reference ref_inactive.rst'+'\n')
-f.write('rmsd :1-171@CA,C,O,N reference'+'\n')
-f.write('rmsd :69-78&!@H= reference nofit out pyl10_holo_rmsd.dat'+'\n')
+f.write('rmsd :1-68,79-171@CA,C,O,N reference'+'\n')
+f.write('rmsd :69-78&!@H= reference nofit out rmsd_cl2_inactive_pyl10.dat'+'\n')
+f.write('average avg_inactive.pdb pdb')
+f.write('atomicfluct out rmsf_pyl10_inactive.dat :1-171 byres')
+f.write('radgyr out gyr_all_pyl10_inactive.dat :1-171 mass nomax')
+f.write('radgyr out gyr_binding_pocket_pyl10_inactive.dat :43,46,47-50,66,68-71,74-79,81,95,97,100-104,107,109,111,128,130,132,146-148,150,151,154,155 mass nomax')
+f.write('surf out surf_pyl10_inactive.dat')
