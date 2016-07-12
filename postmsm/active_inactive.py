@@ -108,16 +108,15 @@ address='/home/sshukla4/pyl10/'
 
 f=open('solvation_inactive_pyl10.in','wb')
 
+f.write(' parm /home/sshukla4/pyl10/round1/apo_aba.top'+ '\n')
 for i in range(0,2):
-  f.write('parm '+address+'round'+str(i+1)+'/apo_aba.top'+ '\n')
   for j in range(0,parallel_traj[i]):
     for k in range(0,seq_traj[i]):
       if os.path.isfile(address+'round'+str(i+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd')== True:
         f.write('trajin '+address+'round'+str(i+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd 1 last 6'+'\n')
       else:
         pass
-  f.write('watershell :A8S watershell_pyl10_inactive.dat W1 lower 3.0 upper 5.0'+ '\n')
-
+f.write('watershell :A8S watershell_pyl10_inactive.dat W1 lower 3.0 upper 5.0'+ '\n')
 f.close()
 
 #round 3 is run is shadowfax; needs different kind of processing for wirting files.
@@ -142,15 +141,14 @@ address='/home/sshukla4/pyl10/'
 
 
 f=open('solvation_active_pyl10.in','wb')
-
-for i in rounds:
-  f.write('parm '+address+'round'+str(i+1)+'/apo_aba.top'+ '\n')
+f.write(' parm /home/sshukla4/pyl10/round1/apo_aba.top'+ '\n')
+for i in range(0,len(rounds)):
   for j in range(0,parallel_traj[i]):
     for k in range(0,seq_traj[i]):
-      if os.path.isfile(address+'round'+str(i+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd')== True:
-        f.write('trajin '+address+'round'+str(i+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd 1 last 6'+'\n')
+      if os.path.isfile(address+'round'+str(rounds[i]+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd')== True:
+        f.write('trajin '+address+'round'+str(rounds[i]+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd 1 last 6'+'\n')
       else:
         pass
-  f.write('watershell :A8S watershell_pyl10_inactive.dat W1 lower 3.0 upper 5.0'+ '\n')
+f.write('watershell :A8S watershell_pyl10_active.dat W1 lower 3.0 upper 5.0'+ '\n')
 
 f.close()
