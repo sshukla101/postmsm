@@ -92,3 +92,65 @@ f.write('radgyr out gyr_binding_pocket_pyl10_active.dat :43,46,47-50,66,68-71,74
 f.write('strip :A8S'+'\n')
 f.write('surf out surf_pyl10_active.dat'+'\n')
 f.close()
+
+
+#-----------------------------------------------------------------------------
+# Calculations of solvated inactive trajectories
+import numpy as np
+import os
+import os.path
+
+rounds=9
+parallel_traj=[20,50,20,16,16,100,16,100,200]
+seq_traj=[6,3,1,1,1,5,1,3,2]
+address='/home/sshukla4/pyl10/'
+
+
+f=open('solvation_inactive_pyl10.in','wb')
+
+for i in range(0,2):
+  f.write('parm '+address+'round'+str(i+1)+'/apo_aba.top'+ '\n')
+  for j in range(0,parallel_traj[i]):
+    for k in range(0,seq_traj[i]):
+      if os.path.isfile(address+'round'+str(i+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd')== True:
+        f.write('trajin '+address+'round'+str(i+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd 1 last 6'+'\n')
+      else:
+        pass
+  f.write('watershell :A8S watershell_pyl10_inactive.dat W1 lower 3.0 upper 5.0'+ '\n')
+
+f.close()
+
+#round 3 is run is shadowfax; needs different kind of processing for wirting files.
+i=3
+par=20
+f=open('solvation_inactive_pyl10_2.in','wb')
+for j in range(0,par):
+  f.write('trajin '+address+'round'+str(i)+'/traj_files/par'+str(j+1)+'.mdcrd 1 last 6'+'\n')
+f.close()
+
+
+
+# Calculations of solvated inactive trajectories
+import numpy as np
+import os
+import os.path
+
+rounds=[9,10]
+parallel_traj=[20,20]
+seq_traj=[5,3]
+address='/home/sshukla4/pyl10/'
+
+
+f=open('solvation_active_pyl10.in','wb')
+
+for i in rounds:
+  f.write('parm '+address+'round'+str(i+1)+'/apo_aba.top'+ '\n')
+  for j in range(0,parallel_traj[i]):
+    for k in range(0,seq_traj[i]):
+      if os.path.isfile(address+'round'+str(i+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd')== True:
+        f.write('trajin '+address+'round'+str(i+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd 1 last 6'+'\n')
+      else:
+        pass
+  f.write('watershell :A8S watershell_pyl10_inactive.dat W1 lower 3.0 upper 5.0'+ '\n')
+
+f.close()
