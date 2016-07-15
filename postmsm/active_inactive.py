@@ -152,3 +152,42 @@ for i in range(0,len(rounds)):
 f.write('watershell :A8S watershell_pyl10_active.dat W1 lower 3.0 upper 5.0'+ '\n')
 
 f.close()
+
+
+#-----------------------------------------------------------------------------------
+# Calculations of Lys and ser distance from ABA in inactive and active trajectories.
+from msmbuilder.utils import io
+#in shadowfax
+lys=io.load('/home/sshukla4/pyl10/msm/rmsd_dist/dist_data/aba_lys_dist.pkl')
+ser=io.load('/home/sshukla4/pyl10/msm/rmsd_dist/dist_data/cl2_ser_aba.pkl')
+
+inactive_lys=lys[0:90]
+active_lys=lys[536:576]
+inactive_ser=ser[0:90]
+active_ser=ser[536:576]
+
+#In lab mac
+os.chdir('/Users/Saurabh/Dropbox/My_Papers_and_Reports/Papers/ABA_binding/figures/active_inactive/pyl10')
+
+inactive_lys=io.load('inactive_lys_aba_pyl10.pkl')
+active_lys=io.load('active_lys_aba_pyl10.pkl')
+inactive_ser=io.load('inactive_ser_aba_pyl10.pkl')
+active_ser=io.load('active_ser_aba_pyl10.pkl')
+
+
+
+for i in range(0,len(inactive_lys)):
+  plt.figure()
+  plt.style.use('seaborn-ticks')
+  plt.plot(inactive_lys[i],label='lys-aba')
+  plt.plot(inactive_ser[i],label='ser-aba')
+  plt.legend()
+  plt.savefig(str(i)+'inactive.png')
+  
+for i in range(0,len(active_lys)):
+  plt.figure()
+  plt.style.use('seaborn-ticks')
+  plt.plot(active_lys[i],label='lys-aba')
+  plt.plot(active_ser[i],label='ser-aba')
+  plt.legend()
+  plt.savefig(str(i)+'active.png')
