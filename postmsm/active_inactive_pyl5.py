@@ -118,3 +118,50 @@ f.write('reference pyl5_active.rst'+'\n')
 f.write('rmsd :1-73,84-166@CA,C,O,N reference'+'\n')
 f.write('rmsd :74-83&!@H= reference nofit out rmsd_cl2_active_from_active_pyl5.dat'+'\n')
 f.close()
+
+
+#-----------------------------------------------------------------------------
+# Calculations of solvated inactive trajectories
+import numpy as np
+import os
+import os.path
+
+rounds=2
+parallel_traj=[50,25]
+seq_traj=[3,3]
+address='/home/sshukla4/pyl5/apo_aba/prod/'
+
+
+f=open('solvation_inactive_pyl5.in','wb')
+
+f.write('parm /home/sshukla4/pyl5/apo_aba/prod/round1/apo_aba.top'+ '\n')
+for i in range(0,1):
+  for j in range(0,parallel_traj[i]):
+    for k in range(0,seq_traj[i]):
+      if os.path.isfile(address+'round'+str(i+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd')== True:
+        f.write('trajin '+address+'round'+str(i+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd 1 last 6'+'\n')
+      else:
+        pass
+f.write('watershell :A8S watershell_pyl5_inactive.dat W1 lower 3.0 upper 5.0'+ '\n')
+f.close()
+
+#-----------------------------------------------------------------------------
+# Calculations of solvated active trajectories
+rounds=2
+parallel_traj=[50,25]
+seq_traj=[3,3]
+address='/home/sshukla4/pyl5/apo_aba/prod/'
+
+
+f=open('solvation_active_pyl5.in','wb')
+
+f.write('parm /home/sshukla4/pyl5/apo_aba/prod/round1/apo_aba.top'+ '\n')
+for i in range(1,2):
+  for j in range(0,parallel_traj[i]):
+    for k in range(0,seq_traj[i]):
+      if os.path.isfile(address+'round'+str(i+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd')== True:
+        f.write('trajin '+address+'round'+str(i+1)+'/traj_files/par'+str(j+1)+'_sim'+str(k+1)+'.mdcrd 1 last 6'+'\n')
+      else:
+        pass
+f.write('watershell :A8S watershell_pyl5_active.dat W1 lower 3.0 upper 5.0'+ '\n')
+f.close()
