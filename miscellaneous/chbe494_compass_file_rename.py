@@ -1,6 +1,12 @@
 import glob
 import os
 
+
+txt_files=glob.glob(".txt")
+  
+for f in txt_files:
+  os.remove(f)
+
 files=glob.glob("*.m")
 new_files=[]
 for i in range(0,len(files)):
@@ -9,7 +15,4 @@ for i in range(0,len(files)):
   os.rename(files[i],new_files[i])
   
   
-  txt_files=glob.glob(".txt")
-  
-  for f in txt_files:
-    os.remove(f)
+
